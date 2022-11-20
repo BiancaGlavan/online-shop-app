@@ -36,7 +36,7 @@ p {
     margin-bottom: 20px;
 }
 
-button {
+.button {
     border: none;
     outline: none;
     background-color: var(--button-color);
@@ -47,6 +47,6 @@ button {
     cursor: pointer;
 }
 
-button:hover {
+.button:hover {
     background-color: var(--button-hover-color);
 }

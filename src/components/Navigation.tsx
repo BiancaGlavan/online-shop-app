@@ -1,6 +1,11 @@
 import { Search, ShoppingCartOutlined } from "@mui/icons-material";
 import Badge from '@mui/material/Badge';
+import axios from "axios";
+import { useContext, useEffect } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { AuthContext } from "../context/AuthContext";
+import UserAvatar from "./UserAvatar";
 
 const Container = styled.div`
    
@@ -70,14 +75,33 @@ const SearchIcon = styled.div`
 `;
 
 const Navigation = () => {
+    const { isAuth, updateUser, updateToken, updateAuth, user } = useContext(AuthContext);
+
+    const localToken = localStorage.getItem("token");
+
+    useEffect(() => {
+        const config = {
+            headers: { Authorization: `Bearer ${localToken}` }
+        };
+
+        if(localToken) {
+            axios.get('https://api.escuelajs.co/api/v1/auth/profile', config).then((response) => {
+                console.log(response.data);
+                updateToken(localToken);
+                updateUser(response.data);
+                updateAuth(true);
+            });
+        }
+       
+    }, [localToken]);
+
     return (
         <Container>
             <Wrapper>
                 <Left>
                     <Logo>
-                        BI.ANCA
+                        <Link to={'/'}>BI.ANCA</Link>
                     </Logo>
-
                 </Left>
                 <Center>
                     <SearchContainer>
@@ -88,13 +112,17 @@ const Navigation = () => {
                     </SearchContainer>
                 </Center>
                 <Right>
-                    <MenuItem>Register</MenuItem>
-                    <MenuItem>Login</MenuItem>
+                    {!isAuth && <>
+                        <MenuItem><Link to={'/register'}>Register</Link></MenuItem>
+                        <MenuItem><Link to={'/login'}>Login</Link></MenuItem>
+                    </>}
+                    {isAuth && <button>Logout</button>}
                     <MenuItem>
                         <Badge badgeContent={4} style={{ color: "#E98074" }}>
                             <ShoppingCartOutlined style={{ color: "#8E8D8A" }} />
                         </Badge>
                     </MenuItem>
+                    {user && <UserAvatar user={user} />}
                 </Right>
             </Wrapper>
         </Container>

@@ -1,30 +1,34 @@
-import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Announcement from './components/Announcement';
 import Navigation from './components/Navigation';
-import { IProduct } from './components/ProductCard';
-import Products from './components/Products';
-import Slider from './components/Slider';
+import AuthProvider from './context/AuthContext';
+import CartPage from './pages/CartPage';
+import HomePage from './pages/HomePage';
+import LoginPage from './pages/LoginPage';
+import ProductsPage from './pages/ProductsPage';
+import RegisterPage from './pages/RegisterPage';
+import SingleProductPage from './pages/SingleProductPage';
 
 function App() {
-  const [products, setProducts] = useState<IProduct[]>([])
 
-
-  useEffect(() => {
-    const productsUrl = 'https://api.escuelajs.co/api/v1/products';
-    axios.get(productsUrl).then((response) => {
-      console.log('response: ', response);
-      setProducts(response.data)
-    });
-  }, []);
 
   return (
     <div className="App">
       {/* <Announcement /> */}
-      <Navigation />
-      <Slider/>
-      <Products products={products} />
+
+      <AuthProvider>
+        <Navigation />
+        <Routes>
+          <Route path='/' element={<HomePage />} />
+          <Route path='/products' element={<ProductsPage />} />
+          <Route path='/products/:id' element={<SingleProductPage />} />
+          <Route path='/login' element={<LoginPage />} />
+          <Route path='/register' element={<RegisterPage />} />
+          <Route path='/shopping-cart' element={<CartPage />} />
+        </Routes>
+      </AuthProvider>
+
     </div>
   )
 }

@@ -9,6 +9,8 @@ import './Slider.css';
 
 
 const Slider = () => {
+
+    
     return (
         <Swiper className="my-swiper" navigation
             modules={[Navigation]}
