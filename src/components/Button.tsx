@@ -16,6 +16,9 @@ const StyledButton = styled.button`
     font-weight: 500;
     cursor: pointer;
 
+    &:hover {
+      background-color: var(--button-hover-color);
+    }
 `;
 
 

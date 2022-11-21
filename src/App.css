@@ -23,6 +23,10 @@
   color: var(--highlight-color) !important;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
 
 .grid-container {
   display: flex;

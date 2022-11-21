@@ -1,4 +1,5 @@
 
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import ProductCard, { IProduct } from "./ProductCard";
 
@@ -12,7 +13,7 @@ const Container = styled.div`
 const Products = (props: IPropsProducts) => {
   return (
     <Container className="products grid-container">
-        {props.products.map((product, idx) => <div className="grid-item xs-12 sm-6 md-4 lg-3" key={product.id}><ProductCard product={product} /></div>)}
+        {props.products.map((product, idx) => <div className="grid-item xs-12 sm-6 md-4 lg-3" key={product.id}><Link to={`/products/${product.id}`}><ProductCard product={product} /></Link></div>)}
     </Container>
   )
 }
