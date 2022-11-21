@@ -4,7 +4,9 @@ import Announcement from './components/Announcement';
 import Navigation from './components/Navigation';
 import SubNavigation from './components/SubNavigation';
 import AuthProvider from './context/AuthContext';
+import CartProvider from './context/CartContext';
 import CartPage from './pages/CartPage';
+import CategoryPage from './pages/CategoryPage';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import ProductsPage from './pages/ProductsPage';
@@ -19,18 +21,20 @@ function App() {
       {/* <Announcement /> */}
 
       <AuthProvider>
-        <Navigation />
-        <SubNavigation />
-        <Routes>
-          <Route path='/' element={<HomePage />} />
-          <Route path='/products' element={<ProductsPage />} />
-          <Route path='/products/:id' element={<SingleProductPage />} />
-          <Route path='/login' element={<LoginPage />} />
-          <Route path='/register' element={<RegisterPage />} />
-          <Route path='/shopping-cart' element={<CartPage />} />
-        </Routes>
+        <CartProvider>
+          <Navigation />
+          <SubNavigation />
+          <Routes>
+            <Route path='/' element={<HomePage />} />
+            <Route path='/products' element={<ProductsPage />} />
+            <Route path='/products/:id' element={<SingleProductPage />} />
+            <Route path='/login' element={<LoginPage />} />
+            <Route path='/register' element={<RegisterPage />} />
+            <Route path='/shopping-cart' element={<CartPage />} />
+            <Route path='/categories/:id' element={<CategoryPage />} />
+          </Routes>
+        </CartProvider>
       </AuthProvider>
-
     </div>
   )
 }

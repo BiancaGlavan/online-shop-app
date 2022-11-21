@@ -7,7 +7,7 @@ import { AuthContext } from "../context/AuthContext";
 
 
 const HomePage = () => {
-    const [products, setProducts] = useState<IProduct[]>([])
+    const [products, setProducts] = useState<IProduct[]>([]);
     const context = useContext(AuthContext);
     console.log('context from homepage: ', context);
 

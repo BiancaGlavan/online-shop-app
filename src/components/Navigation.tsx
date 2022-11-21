@@ -5,6 +5,7 @@ import { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { AuthContext } from "../context/AuthContext";
+import { CartContext } from "../context/CartContext";
 import UserAvatar from "./UserAvatar";
 
 const Container = styled.div`
@@ -76,6 +77,7 @@ const SearchIcon = styled.div`
 
 const Navigation = () => {
     const { isAuth, updateUser, updateToken, updateAuth, user } = useContext(AuthContext);
+    const { products } = useContext(CartContext);
 
     const localToken = localStorage.getItem("token");
 
@@ -118,7 +120,7 @@ const Navigation = () => {
                     </>}
                     {isAuth && <button>Logout</button>}
                     <MenuItem>
-                        <Badge badgeContent={4} style={{ color: "#E98074" }}>
+                        <Badge badgeContent={products.length} style={{ color: "#E98074" }}>
                             <ShoppingCartOutlined style={{ color: "#8E8D8A" }} />
                         </Badge>
                     </MenuItem>
