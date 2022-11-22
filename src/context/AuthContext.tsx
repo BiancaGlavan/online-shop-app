@@ -16,7 +16,7 @@ export type AuthContextType = {
     token: string;
     isAuth: boolean;
     updateToken: (token: string) => void;
-    updateUser: (user: IUser) => void;
+    updateUser: (user: IUser | null) => void;
     updateAuth: (value: boolean) => void;
 };
 

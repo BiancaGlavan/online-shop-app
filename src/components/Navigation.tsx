@@ -86,7 +86,7 @@ const Navigation = () => {
             headers: { Authorization: `Bearer ${localToken}` }
         };
 
-        if(localToken) {
+        if (localToken) {
             axios.get('https://api.escuelajs.co/api/v1/auth/profile', config).then((response) => {
                 console.log(response.data);
                 updateToken(localToken);
@@ -94,7 +94,7 @@ const Navigation = () => {
                 updateAuth(true);
             });
         }
-       
+
     }, [localToken]);
 
     return (
@@ -118,13 +118,17 @@ const Navigation = () => {
                         <MenuItem><Link to={'/register'}>Register</Link></MenuItem>
                         <MenuItem><Link to={'/login'}>Login</Link></MenuItem>
                     </>}
-                    {isAuth && <button>Logout</button>}
+
                     <MenuItem>
-                        <Badge badgeContent={products.length} style={{ color: "#E98074" }}>
-                            <ShoppingCartOutlined style={{ color: "#8E8D8A" }} />
-                        </Badge>
+                        <Link to={'/shopping-cart'}>
+                            <Badge badgeContent={products.length} style={{ color: "#E98074" }}>
+                                <ShoppingCartOutlined style={{ color: "#8E8D8A" }} />
+                            </Badge>
+                        </Link>
                     </MenuItem>
-                    {user && <UserAvatar user={user} />}
+                    <MenuItem>
+                        {user && <UserAvatar user={user} />}
+                    </MenuItem>
                 </Right>
             </Wrapper>
         </Container>

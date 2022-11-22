@@ -10,6 +10,7 @@ import CategoryPage from './pages/CategoryPage';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import ProductsPage from './pages/ProductsPage';
+import ProfilePage from './pages/ProfilePage';
 import RegisterPage from './pages/RegisterPage';
 import SingleProductPage from './pages/SingleProductPage';
 
@@ -32,6 +33,7 @@ function App() {
             <Route path='/register' element={<RegisterPage />} />
             <Route path='/shopping-cart' element={<CartPage />} />
             <Route path='/categories/:id' element={<CategoryPage />} />
+            <Route path='/profile' element={<ProfilePage />} />
           </Routes>
         </CartProvider>
       </AuthProvider>

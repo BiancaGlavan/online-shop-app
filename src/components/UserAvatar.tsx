@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { IUser } from "../context/AuthContext";
+import { AuthContext, IUser } from "../context/AuthContext";
+import Button from "./Button";
 
 
 interface IPropsUserAvatar {
@@ -16,6 +18,7 @@ const Container = styled.div`
 
     img {
         width: 100%;
+        height: 100%;
         object-fit: cover;
         border-radius: 30px;
         
@@ -33,10 +36,18 @@ const Container = styled.div`
         min-height: 250px;
         display: none;
         z-index: 4;
+        padding-bottom: 40px;
+        padding-top: 40px;
+        
+        .link {
+            color: var(--text-color);
+        }
 
 
         &.is-open {
             display: flex;
+            flex-direction: column;
+            justify-content: space-around;
         }
     }
 
@@ -57,13 +68,22 @@ const Container = styled.div`
 
 const UserAvatar = ( {user}: IPropsUserAvatar) => {
     const [isOpen, setIsOpen] = useState(false);
+    const {updateAuth, updateToken, updateUser } = useContext(AuthContext);
+
+    const handleLogout = () => {
+        updateAuth(false);
+        updateToken('');
+        updateUser(null);
+        localStorage.setItem('token', '');
+    }
 
   return (
     <Container>
         <img src={user.avatar} alt="" onClick={() => setIsOpen(!isOpen)}/>
         <div className={`mask ${isOpen ? 'is-open' : ''}`} onClick={() => setIsOpen(false)}></div>
         <div className={`dropdown ${isOpen ? 'is-open' : ''}`}>
-            <h6>sajfd</h6>
+            <Link className="link" onClick={() => setIsOpen(false)} to={'/profile'}><h6>My Profile</h6></Link>
+            <Button name="Logout" onClick={handleLogout}/>
         </div>
     </Container>
   )
