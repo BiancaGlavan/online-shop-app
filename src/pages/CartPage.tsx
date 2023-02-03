@@ -14,7 +14,10 @@ const StyledCartPage = styled.div`
   }
   .wrapper {
     display: flex;
-   
+
+    @media screen and (max-width: 750px) {
+      flex-direction: column;
+    }
   }
 
   .finish-order-container {
@@ -28,6 +31,10 @@ const StyledCartPage = styled.div`
     flex-grow: 1;
     padding: 20px;
     margin-left: 20px;
+
+    @media screen and (max-width: 750px) {
+      margin-left: 0;
+    }
     
     
     .flex-order {
@@ -37,9 +44,6 @@ const StyledCartPage = styled.div`
       margin-bottom: 30px;
     }
 
-    .right {
-      margin-left: 100px;
-    }
   }
 `;
 
@@ -61,7 +65,7 @@ const CartPage = () => {
       <h3 className="page-title">Shopping Cart</h3>
       <div className="wrapper">
         <div className="items-container">
-          {products.map((product, idx) => <CartItem deleteProduct={removeProduct} product={product} />)}
+          {products.map((product, idx) => <CartItem key={product.id} deleteProduct={removeProduct} product={product} />)}
         </div>
         <div className="finish-order-container">
           <h4>Order</h4>

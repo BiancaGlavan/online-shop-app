@@ -18,6 +18,10 @@ const StyledProductPage = styled.div`
     align-items: flex-start;  
     padding: 20px;
 
+    @media screen and (max-width: 900px) {
+      margin-top: 30px;
+    }
+
     .product-title {
       margin-bottom: 20px;
     }

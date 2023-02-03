@@ -12,12 +12,18 @@ const StyledSubNavigation = styled.div`
     .wrapper {
         display: flex;
         justify-content: center;
+        gap: 10px;
+
+        @media screen and (max-width: 600px) {
+            flex-wrap: wrap;
+        }
     }
 
     .category {
         margin: 0 10px;
         font-weight: 700;
         color: var(--text-color);
+
 
         &:hover {
             font-weight: 700;
@@ -40,7 +46,7 @@ const SubNavigation = () => {
     return (
         <StyledSubNavigation>
             <div className="wrapper">
-                {categories.map((category, idx) => <Link className="category" to={'/categories/' + category.id}>{category.name}</Link>)}
+                {categories.map((category, idx) => <Link key={category.id} className="category" to={'/categories/' + category.id}>{category.name}</Link>)}
             </div>
 
         </StyledSubNavigation>

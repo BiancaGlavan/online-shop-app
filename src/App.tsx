@@ -9,7 +9,6 @@ import CartPage from './pages/CartPage';
 import CategoryPage from './pages/CategoryPage';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
-import ProductsPage from './pages/ProductsPage';
 import ProfilePage from './pages/ProfilePage';
 import RegisterPage from './pages/RegisterPage';
 import SingleProductPage from './pages/SingleProductPage';
@@ -27,7 +26,6 @@ function App() {
           <SubNavigation />
           <Routes>
             <Route path='/' element={<HomePage />} />
-            <Route path='/products' element={<ProductsPage />} />
             <Route path='/products/:id' element={<SingleProductPage />} />
             <Route path='/login' element={<LoginPage />} />
             <Route path='/register' element={<RegisterPage />} />

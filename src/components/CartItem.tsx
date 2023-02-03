@@ -10,6 +10,12 @@ const StyledCartItem = styled.div`
     border-radius: 7px;
     margin-bottom: 20px;
 
+    @media screen and (max-width: 600px) {
+        flex-direction: column;
+        gap: 30px;
+        align-items: center;
+      }
+
     .item-img {
         max-width: 200px;
     }
@@ -19,6 +25,11 @@ const StyledCartItem = styled.div`
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        gap: 10px;
+
+        @media screen and (max-width: 600px) {
+            align-items: center;
+        }
     }
 
     .delete {
@@ -28,6 +39,11 @@ const StyledCartItem = styled.div`
 
     .item-desc {
         color: var(--text-color);
+
+        @media screen and (max-width: 600px) {
+            text-align: center;
+
+        }
     }
     .item-categ {
         color: var(--text-color);

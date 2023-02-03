@@ -33,13 +33,12 @@ const Container = styled.div`
         box-shadow: rgb(0 0 0 / 3%) 0px 2px 4px -1px, rgb(0 0 0 / 3%) 0px 2px 5px 0px, rgb(0 0 0 / 4%) 0px 1px 10px 0px;
         padding: 10px;
         min-width: 200px;
-        min-height: 250px;
         display: none;
         z-index: 4;
         padding-bottom: 40px;
         padding-top: 40px;
         
-        .link {
+        .profile {
             color: var(--text-color);
         }
 
@@ -47,7 +46,8 @@ const Container = styled.div`
         &.is-open {
             display: flex;
             flex-direction: column;
-            justify-content: space-around;
+            gap: 20px;
+            align-items: flex-start;
         }
     }
 
@@ -82,7 +82,7 @@ const UserAvatar = ( {user}: IPropsUserAvatar) => {
         <img src={user.avatar} alt="" onClick={() => setIsOpen(!isOpen)}/>
         <div className={`mask ${isOpen ? 'is-open' : ''}`} onClick={() => setIsOpen(false)}></div>
         <div className={`dropdown ${isOpen ? 'is-open' : ''}`}>
-            <Link className="link" onClick={() => setIsOpen(false)} to={'/profile'}><h6>My Profile</h6></Link>
+            <Link onClick={() => setIsOpen(false)} to={'/profile'}><h5 className="profile">My Profile</h5></Link>
             <Button name="Logout" onClick={handleLogout}/>
         </div>
     </Container>

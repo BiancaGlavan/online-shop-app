@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import Button from "../components/Button";
 import Input from "../components/Input";
@@ -9,27 +9,26 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   margin-top: 50px;
-`;
 
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  min-width: 300px;
-`;
+  .title {
+    margin-bottom: 20px;
+    color: var(--text-color);
+    text-align: center;
+  }
 
-const Title = styled.h3`
-  margin-bottom: 20px;
-  color: var(--text-color);
-  text-align: center;
-`;
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+  }
 
+  .error {
+    color: var(--highlight-color);
+  }
 
-const ErrorMessage = styled.p`
-  color: var(--highlight-color);
-`;
-
-const SuccesMessage = styled.p`
-  color: #2e7d32;
+  .succes {
+    color: #2e7d32;
+  }
 `;
 
 const RegisterPage = () => {
@@ -63,7 +62,7 @@ const RegisterPage = () => {
       email: email,
       name: username,
       password: password,
-      role: "user",
+      role: "customer",
       avatar: "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/small-dog-breeds-cavalier-king-charles-spaniel-1583341713.jpg"
     }
 
@@ -74,6 +73,7 @@ const RegisterPage = () => {
           setIsSucces(true);
         }, (error) => {
           console.log('is error:', error);
+          setErrorMsg('Something went wrong!')
         });
     }
 
@@ -83,15 +83,16 @@ const RegisterPage = () => {
 
   return (
     <Container>
-      <Wrapper>
-        <Title>Register</Title>
-        <Input value={username} type="text" placeholder="username" onChange={setUsername} />
+      <div className="wrapper">
+        <h3 className="title">Register</h3>
+        <Input value={username} type="text" label={'Username'} placeholder="username" onChange={setUsername} />
         <Input onChange={setEmail} placeholder={'email'} type={'email'} label={'Email'} value={email} />
         <Input onChange={setPassword} placeholder={'password'} type={'password'} label={'Password'} value={password} />
-        <ErrorMessage>{errorMsg}</ErrorMessage>
+        
+        <p className="error">{errorMsg}</p>
         <Button name='Create User' onClick={handleRegister} />
-        {isSucces && <SuccesMessage>User was created!</SuccesMessage>}
-      </Wrapper>
+        {isSucces && <p className="succes">User was created!</p>}
+      </div>
     </Container>
   )
 }

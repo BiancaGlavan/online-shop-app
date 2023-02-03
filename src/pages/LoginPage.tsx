@@ -11,12 +11,16 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   margin-top: 50px;
-`;
 
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  min-width: 300px;
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+  }
+
+  .error {
+    color: var(--highlight-color);
+  }
 `;
 
 const LoginPage = () => {
@@ -43,6 +47,7 @@ const LoginPage = () => {
 
             }, (error) => {
                 console.log('is error:', error);
+                setErrorMsg('Something went wrong!')
             });
     }
 
@@ -54,11 +59,13 @@ const LoginPage = () => {
 
     return (
         <Container>
-            <Wrapper>
+            <div className="wrapper">
                 <Input onChange={setEmail} placeholder={'email'} type={'email'} label={'Email'} value={email} />
                 <Input onChange={setPassword} placeholder={'password'} type={'password'} label={'Password'} value={password} />
+                <p className="error">{errorMsg}</p>
                 <Button name="Login" onClick={handleLogin} />
-            </Wrapper>
+                
+            </div>
         </Container>
     )
 }

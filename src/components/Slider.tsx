@@ -3,11 +3,14 @@ import { Navigation } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 import './Slider.css';
+import { useMediaQuery, useTheme } from "@mui/material";
 
 
 
 const Slider = () => {
-
+    
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
     
     return (
         <Swiper className="my-swiper" navigation
@@ -17,8 +20,8 @@ const Slider = () => {
             loop
             style={{ height: '500px' }}>
             <SwiperSlide className="swiper-slide">
-                <img className="img-slide"
-                    src="./images/cover1.jpg" />
+                {!isMobile && <img className="img-slide"
+                    src="./images/cover1.jpg" />}
                 <div className="text-container">
                     <h1 className="title">WINTER SALE</h1>
                     <p className="subtitle">DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.</p>
@@ -26,8 +29,8 @@ const Slider = () => {
                 </div>
             </SwiperSlide>
             <SwiperSlide className="swiper-slide">
-                <img className="img-slide"
-                    src="./images/cover2.jpg" />
+                {!isMobile && <img className="img-slide"
+                    src="./images/cover2.jpg" />}
                 <div className="text-container">
                     <h1 className="title">SPRING SALE</h1>
                     <p className="subtitle">DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.</p>
@@ -35,8 +38,8 @@ const Slider = () => {
                 </div>
             </SwiperSlide>
             <SwiperSlide className="swiper-slide">
-                <img className="img-slide"
-                    src="./images/cover3.jpg" />
+                {!isMobile && <img className="img-slide"
+                    src="./images/cover3.jpg" />}
                 <div className="text-container">
                     <h1 className="title">SUMMER SALE</h1>
                     <p className="subtitle">DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.</p>
@@ -44,8 +47,8 @@ const Slider = () => {
                 </div>
             </SwiperSlide>
             <SwiperSlide className="swiper-slide">
-                <img className="img-slide"
-                    src="./images/cover4.jpg" />
+                {!isMobile && <img className="img-slide"
+                    src="./images/cover4.jpg" />}
                 <div className="text-container">
                     <h1 className="title">AUTUMN SALE</h1>
                     <p className="subtitle">DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.</p>

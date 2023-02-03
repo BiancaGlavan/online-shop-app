@@ -31,7 +31,7 @@ const ProductSlider = ({ images }: IPropsProductSlider) => {
                 slidesPerView={1}
                 loop
                 >
-                {images.map((img, idx) => <SwiperSlide className="product-slide" >
+                {images.map((img, idx) => <SwiperSlide key={idx} className="product-slide" >
                     <img className="product-image"
                         src={img} />
                 </SwiperSlide>)}
