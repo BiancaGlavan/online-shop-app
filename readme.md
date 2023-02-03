@@ -1,11 +1,11 @@
 # Online Shop
 
-- Live Site URL: [https://sweet-rabanadas-e827c7.netlify.app/](https://sweet-rabanadas-e827c7.netlify.app/)
+- Live Site URL: [https://chic-alfajores-511296.netlify.app/](https://chic-alfajores-511296.netlify.app/)
 
 # Screenshot
 
-![](./public/images/Homepage.PNG)
-![](./public/images/Productspage.PNG)
+![](./public/images/Capture2.PNG)
+![](./public/images/Capture1.PNG)
 
 
 # The website
@@ -21,11 +21,18 @@ Users should be able to:
 
 # Built with
 
--REACT
--TYPESCRIPT
--REACT useContext for global state
--AXIOS
--MUI
--API
--REACT ROUTER DOM
--STYLED-COMPONENTS 
+-REACT;
+
+-TYPESCRIPT;
+
+-REACT useContext for global state;
+
+-AXIOS;
+
+-MUI;
+
+-API;
+
+-REACT ROUTER DOM;
+
+-STYLED-COMPONENTS;

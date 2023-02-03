@@ -28,6 +28,7 @@ const Container = styled.div`
 
   .succes {
     color: #2e7d32;
+    margin-top: 20px;
   }
 `;
 

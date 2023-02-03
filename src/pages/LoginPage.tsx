@@ -20,6 +20,7 @@ const Container = styled.div`
 
   .error {
     color: var(--highlight-color);
+    margin-top: 20px;
   }
 `;
 
@@ -62,9 +63,8 @@ const LoginPage = () => {
             <div className="wrapper">
                 <Input onChange={setEmail} placeholder={'email'} type={'email'} label={'Email'} value={email} />
                 <Input onChange={setPassword} placeholder={'password'} type={'password'} label={'Password'} value={password} />
-                <p className="error">{errorMsg}</p>
                 <Button name="Login" onClick={handleLogin} />
-                
+                <p className="error">{errorMsg}</p>
             </div>
         </Container>
     )
